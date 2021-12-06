@@ -18,15 +18,9 @@ contract MurmurationsAlpha is ERC721URIStorage {
         console.log("Loading Murmuration NFT contract.");
     }
 
-    // Mint an NFT from this contract
     function mintMurmuration() public {
         uint256 newItemId = _tokenIds.current();
         _safeMint(msg.sender, newItemId);
-
-        // Set the NFT's data.
-        // Looks like https://murmurations.gallery/alpha/1.metadata
-
-        // string memory newItemURI = string(abi.encodePacked("https://murmurations.gallery/alpha/", uint2str(newItemId), ".json"));
 
         string memory json = Base64.encode(
             bytes(
@@ -44,7 +38,6 @@ contract MurmurationsAlpha is ERC721URIStorage {
             )
         );
 
-        // Just like before, we prepend data:application/json;base64, to our data.
         string memory newItemURI = string(
             abi.encodePacked("data:application/json;base64,", json)
         );
@@ -52,23 +45,19 @@ contract MurmurationsAlpha is ERC721URIStorage {
         _setTokenURI(newItemId, newItemURI);
         console.log("An NFT w/ ID %s has been minted to %s with metadata %s", newItemId, msg.sender, newItemURI);
         
-        // Increment the counter for when the next NFT is minted.
         _tokenIds.increment();
     }
 
-    // https://ethereum.stackexchange.com/questions/6591/conversion-of-uint-to-string
     function uint2str(uint256 _i) internal pure returns (string memory str) {
         if (_i == 0) {
             return "0";
         }
-
         uint256 j = _i;
         uint256 length;
         while (j != 0) {
             length++;
             j /= 10;
         }
-
         bytes memory bstr = new bytes(length);
         uint256 k = length;
         j = _i;

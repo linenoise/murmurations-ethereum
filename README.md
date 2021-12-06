@@ -1,8 +1,8 @@
 # Murmurations 
 
-Source for https://murmurations.gallery/
+Source for https://murmurations.gallery/ and publicly auditable NFT smart contracts.
 
-m0bius.eth and linenoise.eth's NFT marketplace
+[m0bius.eth](https://twitter.com/cyclemobius) and [linenoise.eth](https://linenoise.io/)'s NFT gallery.
 
 ## Runtime
 
@@ -27,16 +27,11 @@ npx hardhat run scripts/sample-script.js
 
 ## Hardhat
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
 ```shell
 npx hardhat accounts
 npx hardhat compile
 npx hardhat clean
 npx hardhat test
 npx hardhat node
-node scripts/sample-script.js
 npx hardhat help
 ```

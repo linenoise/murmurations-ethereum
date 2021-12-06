@@ -15,11 +15,21 @@ contract MurmurationsAlpha is ERC721URIStorage {
     Counters.Counter private _tokenIds;
 
     constructor() ERC721 ("Murmuration", "MURMUR") {
-        console.log("Loading Murmuration NFT contract.");
+        console.log("Loading Murmuration Alpha contract.");
+    }
+
+    event murmurationsCounted(address sender, uint256 tokenId);
+    event newMurmurationMinted(address sender, uint256 tokenId);
+
+    function countMurmurations() public returns (uint256 totalMurmurations){
+        totalMurmurations = _tokenIds.current();
+        console.log("Total murmurations minted: %s", totalMurmurations);
+        emit murmurationsCounted(msg.sender, totalMurmurations);
     }
 
     function mintMurmuration() public {
         uint256 newItemId = _tokenIds.current();
+        require(newItemId < 7, 'No more than seven alpha murmurations may be minted.');
         _safeMint(msg.sender, newItemId);
 
         string memory json = Base64.encode(
@@ -30,7 +40,7 @@ contract MurmurationsAlpha is ERC721URIStorage {
                         uint2str(newItemId),
                         '", "description": "Murmurations Alpha #',
                         uint2str(newItemId),
-                        '", "image": "https://gateway.pinata.cloud/ipfs/QmQM22rbkk6xDWXCAPWod4LdKFmvpxBfVmT5ZZcZ6bGQv8/murmurations_alpha_',
+                        '", "image": "https://gateway.pinata.cloud/ipfs/QmQxKAr5YGkssmFJFfaHoEDq1SeugTsrbX7SW3hfuE8rXB/alpha_',
                         uint2str(newItemId),
                         '.png"}'
                     )
@@ -43,9 +53,10 @@ contract MurmurationsAlpha is ERC721URIStorage {
         );
 
         _setTokenURI(newItemId, newItemURI);
-        console.log("An NFT w/ ID %s has been minted to %s with metadata %s", newItemId, msg.sender, newItemURI);
+        console.log("An NFT with ID %s has been minted to %s with metadata %s", newItemId, msg.sender, newItemURI);
         
         _tokenIds.increment();
+        emit newMurmurationMinted(msg.sender, newItemId);
     }
 
     function uint2str(uint256 _i) internal pure returns (string memory str) {

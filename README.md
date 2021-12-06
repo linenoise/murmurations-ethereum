@@ -16,6 +16,15 @@ To Rinkeby testnet:
 2. Update the contract address in murmurations-web/src/App.js.
 3. Copy the ABI file from murmurations-ethereum/artifacts/contracts/MurmurationsAlpha.sol/MurmurationsAlpha.json to murmurations-web/src/utils/MurmurationsAlpha.json.
 
+## Verification
+
+`npx hardhat verify NEW_CONTRACT_ADDRESS --network rinkeby`
+
+## Public Keys
+
+* Rinkeby / Developent: `0x37E017f84E468a01d7Bb84ef49A8E4668e6B2424`
+* Mainnet / Production: `0x695dC24eE73164f71A8a82fe63a2a097A910096F`
+
 ## Changelog
 
 Version 0.1

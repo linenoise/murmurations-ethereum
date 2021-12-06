@@ -1,16 +1,20 @@
 # Murmurations 
+## Ethereum VM Smart Contracts
 
-Source for https://murmurations.gallery/ and publicly auditable NFT smart contracts.
+Source for https://murmurations.gallery/ NFT smart contracts.
 
-[m0bius.eth](https://twitter.com/cyclemobius) and [linenoise.eth](https://linenoise.io/)'s NFT gallery.
+This is [m0bius.eth](https://twitter.com/cyclemobius) and [linenoise.eth](https://linenoise.io/)'s NFT gallery.
 
-## Runtime
+## Test
 
-Compile the smart contract: `npx hardhat run scripts/run-alpha.js`
+`npx hardhat run scripts/run-alpha.js`
 
-Deploy the smart contract to Rinkeby testnet: `npx hardhat run scripts/deploy-alpha.js --network rinkeby`
+## Deploy
 
-Publish the contents of 'gallery' folder to metadata.gallery: `scripts/publish.sh`
+To Rinkeby testnet: 
+1. `npx hardhat run scripts/deploy-alpha.js --network rinkeby`
+2. Update the contract address in murmurations-web/src/App.js.
+3. Copy the ABI file from murmurations-ethereum/artifacts/contracts/MurmurationsAlpha.sol/MurmurationsAlpha.json to murmurations-web/src/utils/MurmurationsAlpha.json.
 
 ## Changelog
 

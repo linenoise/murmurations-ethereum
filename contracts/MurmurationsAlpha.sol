@@ -18,14 +18,7 @@ contract MurmurationsAlpha is ERC721URIStorage {
         console.log("Loading Murmuration Alpha contract.");
     }
 
-    event murmurationsCounted(address sender, uint256 tokenId);
     event newMurmurationMinted(address sender, uint256 tokenId);
-
-    function countMurmurations() public returns (uint256 totalMurmurations){
-        totalMurmurations = _tokenIds.current();
-        console.log("Total murmurations minted: %s", totalMurmurations);
-        emit murmurationsCounted(msg.sender, totalMurmurations);
-    }
 
     function mintMurmuration() public {
         uint256 newItemId = _tokenIds.current();
